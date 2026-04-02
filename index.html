@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUREATE | Ultra-Luxury Wedding Venue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           1. CORE LUXURY DESIGN SYSTEM
+           ========================================== */
+        :root {
+            /* Exact Brand Colors */
+            --emerald: #0A1E14;       /* Deep, sophisticated signature green */
+            --emerald-dark: #06120C;
+            --gold: #C5A877;          /* Refined Champagne Gold */
+            --gold-muted: #A38A5F;
+            --alabaster: #F9F8F6;     /* Warm, premium off-white (No pure white backgrounds) */
+            --text-dark: #1A1A1A;
+            --text-light: #FFFFFF;
+            
+            /* Typography */
+            --serif: 'Cormorant Garamond', serif;
+            --sans: 'Inter', sans-serif;
+            
+            /* Spatial System */
+            --pad-section: 140px 8%;
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--alabaster);
+            color: var(--text-dark);
+            font-family: var(--sans);
+            font-weight: 300;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection { background: var(--gold); color: var(--text-light); }
+
+        /* Typography Hierarchy */
+        h1, h2, h3, h4, .serif { font-family: var(--serif); font-weight: 400; }
+        
+        .subtitle {
+            font-family: var(--sans);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-size: 0.65rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* Smooth Reveal Animation Class */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================
+           2. NAVIGATION (ARCHITECTURAL & CLEAN)
+           ========================================== */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 30px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 999;
+            transition: all 0.5s ease;
+            border-bottom: 1px solid transparent;
+        }
+        nav.scrolled {
+            background-color: var(--emerald);
+            padding: 20px 8%;
+            border-bottom: 1px solid rgba(197, 168, 119, 0.15);
+        }
+        .logo {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            color: var(--text-light);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .nav-btn {
+            font-family: var(--sans);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-light);
+            text-decoration: none;
+            border: 1px solid var(--gold);
+            padding: 12px 28px;
+            transition: all 0.4s ease;
+        }
+        .nav-btn:hover {
+            background-color: var(--gold);
+            color: var(--emerald);
+        }
+
+        /* ==========================================
+           3. HERO SECTION (EDITORIAL CINEMA)
+           ========================================== */
+        .hero {
+            height: 100vh;
+            position: relative;
+            background-color: var(--emerald);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            animation: slowPan 30s linear infinite alternate;
+        }
+        @keyframes slowPan { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        
+        .hero-vignette {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 20%, var(--emerald-dark) 100%);
+        }
+        
+        .hero-content {
+            position: relative; z-index: 2; color: var(--text-light);
+            max-width: 900px; padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 1.05;
+            margin-bottom: 25px;
+            letter-spacing: -0.02em;
+            opacity: 0; transform: translateY(20px);
+            animation: enterUp 1.5s ease forwards 0.3s;
+        }
+        .hero p {
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 40px;
+            opacity: 0; transform: translateY(20px);
+            animation: enterUp 1.5s ease forwards 0.6s;
+        }
+        @keyframes enterUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* ==========================================
+           4. THE BRAND STATEMENT
+           ========================================== */
+        .statement {
+            padding: var(--pad-section);
+            background-color: var(--alabaster);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+        .statement-text h2 {
+            font-size: clamp(2.5rem, 4vw, 4.5rem);
+            color: var(--emerald);
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+        .statement-text p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+            max-width: 450px;
+        }
+        .statement-img {
+            position: relative;
+        }
+        .statement-img img {
+            width: 100%;
+            height: 80vh;
+            object-fit: cover;
+        }
+        /* Elegant geometric accent */
+        .statement-img::after {
+            content: '';
+            position: absolute;
+            top: -20px; right: -20px;
+            width: 100%; height: 100%;
+            border: 1px solid var(--gold);
+            z-index: -1;
+        }
+
+        /* ==========================================
+           5. THE EXPERIENCES (REFINED ARCHITECTURAL GRID)
+           ========================================== */
+        .experiences {
+            background-color: var(--emerald);
+            color: var(--text-light);
+            padding: var(--pad-section);
+        }
+        .exp-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        .exp-header h2 {
+            font-size: clamp(3rem, 5vw, 4rem);
+        }
+        
+        .exp-block {
+            display: grid;
+            grid-template-columns: 5fr 5fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+        .exp-block:nth-child(even) {
+            direction: rtl; /* Swaps the layout elegantly */
+        }
+        .exp-block:nth-child(even) > * {
+            direction: ltr; /* Resets text direction */
+        }
+        .exp-img {
+            width: 100%;
+            height: 65vh;
+            object-fit: cover;
+        }
+        .exp-text h3 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--alabaster);
+        }
+        .exp-text p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 400px;
+        }
+
+        /* ==========================================
+           6. GALLERY (FLAWLESS MASONRY)
+           ========================================== */
+        .gallery-section {
+            padding: var(--pad-section);
+            background-color: var(--alabaster);
+        }
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 20px;
+        }
+        .gallery-header h2 {
+            font-size: 3.5rem;
+            color: var(--emerald);
+        }
+        
+        .gallery-grid {
+            display: column;
+            column-count: 3;
+            column-gap: 20px;
+        }
+        .gallery-item {
+            margin-bottom: 20px;
+            overflow: hidden;
+            break-inside: avoid;
+        }
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 1s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+
+        /* ==========================================
+           7. EMOTIONAL ANCHOR
+           ========================================== */
+        .emotion {
+            background-color: var(--emerald);
+            padding: 180px 8%;
+            text-align: center;
+            border-top: 1px solid var(--gold-muted);
+            border-bottom: 1px solid var(--gold-muted);
+        }
+        .emotion h2 {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            color: var(--text-light);
+            line-height: 1.2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .emotion h2 i { color: var(--gold); }
+
+        /* ==========================================
+           8. TESTIMONIALS (ULTRA CLEAN)
+           ========================================== */
+        .testimonials {
+            padding: var(--pad-section);
+            background-color: var(--alabaster);
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 60px;
+        }
+        .test-card {
+            border-top: 1px solid var(--gold);
+            padding-top: 30px;
+        }
+        .test-card p {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        .test-card span {
+            font-family: var(--sans);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--emerald);
+            font-weight: 400;
+        }
+
+        /* ==========================================
+           9. FINAL CTA
+           ========================================== */
+        .cta-section {
+            padding: 180px 8%;
+            background-color: var(--emerald);
+            text-align: center;
+            color: var(--text-light);
+        }
+        .cta-section h2 {
+            font-size: clamp(3rem, 6vw, 6rem);
+            margin-bottom: 50px;
+            line-height: 1;
+        }
+        .btn-solid {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--emerald);
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            padding: 20px 45px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-solid:hover {
+            background-color: var(--text-light);
+        }
+
+        /* ==========================================
+           10. FOOTER
+           ========================================== */
+        footer {
+            background-color: var(--emerald-dark);
+            color: rgba(255, 255, 255, 0.5);
+            padding: 80px 8% 40px;
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 60px;
+            margin-bottom: 40px;
+        }
+        .footer-logo {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+        }
+        .footer-links {
+            display: flex;
+            gap: 40px;
+        }
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            :root { --pad-section: 100px 5%; }
+            .statement, .exp-block { grid-template-columns: 1fr; gap: 50px; }
+            .exp-block:nth-child(even) { direction: ltr; }
+            .statement-img::after { display: none; }
+            .gallery-grid { column-count: 2; }
+            .test-grid { grid-template-columns: 1fr; }
+            .footer-top { flex-direction: column; gap: 30px; text-align: center; }
+        }
+        @media (max-width: 600px) {
+            .gallery-grid { column-count: 1; }
+            .gallery-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="#" class="logo">Aureate</a>
+        <a href="#inquire" class="nav-btn">Reserve a Tour</a>
+    </nav>
+
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop" alt="Aureate Venue" class="hero-bg">
+        <div class="hero-vignette"></div>
+        <div class="hero-content">
+            <p>The Official Statement of Luxury</p>
+            <h1>Crafted For Life’s Most Exquisite Celebrations</h1>
+        </div>
+    </section>
+
+    <section class="statement">
+        <div class="statement-text fade-up">
+            <span class="subtitle">Our Heritage</span>
+            <h2>A Canvas of <br><i>Modern Royalty.</i></h2>
+            <p>Aureate is strictly designed for monumental life events. We have abandoned the traditional banquet approach to build an architectural sanctuary.</p>
+            <p>Sweeping negative space, intentional lighting, and unparalleled service define the Aureate standard. Your story deserves a stage this flawless.</p>
+        </div>
+        <div class="statement-img fade-up">
+            <img src="https://lh3.googleusercontent.com/p/AF1QipOlaxnsyc0SRVn5kPFyLrbNm0IeRuLyiZaj63hX=s1360-w1360-h1020-rw?q=80&w=2070&auto=format&fit=crop" alt="Architectural Detail">
+        </div>
+    </section>
+
+    <section class="experiences">
+        <div class="exp-header fade-up">
+            <span class="subtitle">The Signature Offerings</span>
+            <h2>The Aureate Standard</h2>
+        </div>
+
+        <div class="exp-block fade-up">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqTSSYt_t-5QcKAjSY5mLADvA5eG6gbW7hTcQ3Z1xNoW8qG4ozsJMVnkYGAeAUg8rLQ7vcyhc8ct06LClzFL4BOrr4QK4WqRNONIOrIN6znTgvqKF9uiFgvHmregMA5dkSkxT0fYW34Sm61=s1360-w1360-h1020-rw?q=80&w=2069&auto=format&fit=crop" alt="The Ceremony" class="exp-img">
+            <div class="exp-text">
+                <span class="subtitle">01 / The Vows</span>
+                <h3>Monumental Splendor</h3>
+                <p>Exchange promises in an environment engineered to amplify emotion. Our cinematic halls provide a breathtaking backdrop for your most important moment.</p>
+            </div>
+        </div>
+
+        <div class="exp-block fade-up">
+            <img src="https://lh3.googleusercontent.com/p/AF1QipMmHc4HJI7-aYmGY7hN7yJ7rYtPtLbpZpdNpjN5=s1360-w1360-h1020-rw?q=80&w=2039&auto=format&fit=crop" alt="The Reception" class="exp-img">
+            <div class="exp-text">
+                <span class="subtitle">02 / The Gala</span>
+                <h3>Seamless Celebrations</h3>
+                <p>Transition effortlessly into a night of absolute luxury. Sweeping spaces and acoustic perfection create a reception your guests will recount for decades.</p>
+            </div>
+        </div>
+
+        <div class="exp-block fade-up">
+            <img src="https://lh3.googleusercontent.com/p/AF1QipPW-QLrOoeIpLC21n3h53q69EMAcoBBBCB3cyag=s1360-w1360-h1020-rw?q=80&w=2070&auto=format&fit=crop" alt="Luxury Dining" class="exp-img">
+            <div class="exp-text">
+                <span class="subtitle">03 / The Feast</span>
+                <h3>Culinary Artistry</h3>
+                <p>Gastronomy elevated to an art form. Curated by elite chefs, dining at Aureate is a masterclass in rare ingredients and flawless, white-glove presentation.</p>
+            </div>
+        </div>
+
+        <div class="exp-block fade-up">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwep5X6-cpyYgIQIhP314Spqe2tqR0-ebyqo1-7PSJJu2ShZ62nD3T0ggv2AW7DmDHmANoAGnB3XZzaZTmBcXyEQBtiJpKrm4ahmPyQcRRtqBIq9W1EI0oBHzA_xHldSl3szX5kjUVdZdDmMp=s1360-w1360-h1020-rw?q=80&w=2070&auto=format&fit=crop" alt="Grand Decor" class="exp-img">
+            <div class="exp-text">
+                <span class="subtitle">04 / The Atmosphere</span>
+                <h3>Avant-Garde Design</h3>
+                <p>Custom structural installations, rare floral arrangements, and bespoke lighting ensure your exact vision is executed impeccably.</p>
+            </div>
+        </div>
+        
+        <div class="exp-block fade-up">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop" alt="Guest Experience" class="exp-img">
+            <div class="exp-text">
+                <span class="subtitle">05 / The Service</span>
+                <h3>Effortless Luxury</h3>
+                <p>From valet arrival to the final departure, every single guest touchpoint is curated to feel exclusively premium and deeply welcoming.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="gallery-header fade-up">
+            <h2>The Aesthetics</h2>
+            <span class="subtitle" style="margin:0;">Captured Moments</span>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item fade-up"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070&auto=format&fit=crop" alt="Detail 1"></div>
+            <div class="gallery-item fade-up"><img src="https://lh3.googleusercontent.com/p/AF1QipPEU0GHlnaW83Eipr1AJUPxu1Hn-OQiHJ7TLmmt=s1360-w1360-h1020-rw?q=80&w=2070&auto=format&fit=crop" alt="Detail 2"></div>
+            <div class="gallery-item fade-up"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweoThqDqfOgFI7ukZLp6ISrnyqOvp7nirPQirZOc2OpzEwJdrQQ2_wT1YOGaSgCzMn-lmrcrpWeCZw8hM_B6Nbz0ObO0M56gKR_kZc_ntKKwcbQV__zIyf71ayqKfBvaYmbqkJOmvqW2lnGe=s1360-w1360-h1020-rw?q=80&w=1964&auto=format&fit=crop" alt="Detail 3"></div>
+            <div class="gallery-item fade-up"><img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=2070&auto=format&fit=crop" alt="Detail 4"></div>
+            <div class="gallery-item fade-up"><img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2070&auto=format&fit=crop" alt="Detail 5"></div>
+            <div class="gallery-item fade-up"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerxHoAHhY7yZJDWse1oaXhaaKdQ0n4BtjI7GKsNer06NHMe6-4SOBCZm5jQ29Iq05eh15w5BrJZ0oJil_xv3hxV2mI_mqiJLC2VPZmCzkZeZIj2XOdJHVqmFZrE9gIzzHGOo06j5-RytTA=s1360-w1360-h1020-rw?q=80&w=2070&auto=format&fit=crop" alt="Detail 6"></div>
+        </div>
+    </section>
+
+    <section class="emotion fade-up">
+        <h2>"More Than A Venue.<br><i>A Lifetime Memory.</i>"</h2>
+    </section>
+
+    <section class="testimonials">
+        <div class="test-grid">
+            <div class="test-card fade-up">
+                <p>"An absolute masterpiece. From the architecture to the impeccable service, Aureate delivered a wedding that transcended every expectation."</p>
+                <span>— The Sharma Family</span>
+            </div>
+            <div class="test-card fade-up" style="transition-delay: 0.1s;">
+                <p>"The sheer scale and grandeur made our vows feel incredibly cinematic. It is not just a venue; it is a flawless co-star to our love story."</p>
+                <span>— Riya & Kunal</span>
+            </div>
+            <div class="test-card fade-up" style="transition-delay: 0.2s;">
+                <p>"They truly are the moment makers. The attention to detail and the sheer luxury of the space is unparalleled. Worth every single second."</p>
+                <span>— Anita & Vikram</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="inquire" class="cta-section">
+        <h2 class="fade-up">Let’s Begin Your<br><i>Celebration Story</i></h2>
+        <a href="#" class="btn-solid fade-up" style="transition-delay: 0.2s;">Reserve A Private Tour</a>
+    </section>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">AUREATE</div>
+            <div class="footer-links">
+                <a href="#">The Venues</a>
+                <a href="#">Gallery</a>
+                <a href="#">Press</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Aureate Luxury Venues.</span>
+            <span>A Monumental Experience.</span>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Navbar Solidify on Scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Smooth Intersection Observer for elegant fade-ups
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            document.querySelectorAll('.fade-up').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
